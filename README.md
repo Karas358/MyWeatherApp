@@ -14,3 +14,5 @@ Simple android that displays the current location's weather forecast.
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation 'androidx.cardview:cardview:1.0.0'
+
+
