@@ -1,7 +1,10 @@
 package com.example.mfundofalteni.myweatherapp;
 
+import android.util.Log;
+
 public class GetIcon {
     public int getWeatherIcon(String small_desc){
+        //Log.e("Check Desc", small_desc);
         switch (small_desc){
             case "scattered clouds":
                 return R.drawable.clouds;
@@ -9,7 +12,7 @@ public class GetIcon {
                 return R.drawable.cloud;
             case "broken clouds":
                 return R.drawable.clouds;
-            case "clear sky":
+            case "sky is clear":
                 return R.drawable.clear;
             case "snow":
                 return R.drawable.snow;

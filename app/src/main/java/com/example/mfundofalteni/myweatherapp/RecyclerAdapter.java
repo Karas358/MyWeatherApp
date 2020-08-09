@@ -56,7 +56,7 @@ class RecyclerAdaper extends RecyclerView.Adapter<RecyclerAdaper.MyViewHolder> {
         holder.txtMin.setText(weatherModel.TempMin);
         holder.txtMax.setText(weatherModel.TempMax);
         holder.txtWind.setText(weatherModel.WindSpeed);
-        holder.imgview.setImageResource(getIcon.getWeatherIcon(weatherModel.MainDesc));
+        holder.imgview.setImageResource(getIcon.getWeatherIcon(weatherModel.Description));
     }
 
     @Override

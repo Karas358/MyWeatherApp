@@ -128,7 +128,7 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdaper
                 String s = objects[0];
                 String s1 = objects[1];
                 String s3 = getString(R.string.api_key);
-                String urlString = "https://api.openweathermap.org/data/2.5/forecast/daily?lat=" + s +"&lon=" + s1 +"&units=metric&cnt=17&appid=" + s3;
+                String urlString = "https://api.openweathermap.org/data/2.5/forecast/daily?lat=" + s +"&lon=" + s1 +"&units=metric&cnt=6&appid=" + s3;
                 URL url = new URL(urlString);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 int res = httpURLConnection.getResponseCode();
@@ -155,6 +155,7 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdaper
             ParseJSON parseJSON = new ParseJSON();
             list = parseJSON.parseWeather(res);
             WeatherModel weatherModel = list.get(0);
+            weatherModel.DT = "Today, " + weatherModel.DT;
             populateToday(weatherModel);
             list.remove(0);
             recyclerAdaper = new RecyclerAdaper(list, this);

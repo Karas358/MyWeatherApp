@@ -29,8 +29,8 @@ public class ParseJSON {
                 weatherModel.DT = getMonth.getMonthName(DT.substring(0,2)) + DT.substring(2,5);
                 weatherModel.Sunrise = Instant.ofEpochSecond(Long.parseLong(jsonWeatherOBJ.getString("sunrise"))).toString().substring(11, 16);
                 weatherModel.Sunset = Instant.ofEpochSecond(Long.parseLong(jsonWeatherOBJ.getString("sunset"))).toString().substring(11, 16);
-                weatherModel.TempMin = jsonTempObj.getString("min").substring(0,2) +" °C";
-                weatherModel.TempMax = jsonTempObj.getString("max").substring(0,2) +" °C";
+                weatherModel.TempMin = jsonTempObj.getString("min") +" °C";
+                weatherModel.TempMax = jsonTempObj.getString("max") +" °C";
                 weatherModel.Humidity = jsonWeatherOBJ.getString("humidity") + " %";;
                 weatherModel.WindSpeed = jsonWeatherOBJ.getString("speed") + " \nkm/h";
                 weatherModel.Description = jsonWeather.getString("description");
