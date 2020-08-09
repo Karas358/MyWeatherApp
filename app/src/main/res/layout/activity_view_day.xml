@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="2sp"
     android:screenOrientation="locked"
@@ -17,14 +17,17 @@
         android:layout_marginTop="15dp"
         android:orientation="vertical"
         android:visibility="gone">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <include layout="@layout/weather_placeholder_layout" />
 
         </LinearLayout>
     </com.facebook.shimmer.ShimmerFrameLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_Above"
         android:layout_width="match_parent"
@@ -32,19 +35,21 @@
         android:layout_gravity="center|center_horizontal|center_vertical"
         android:padding="3sp"
         android:scrollbars="horizontal" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="bottom"
         android:orientation="vertical"
-        android:padding="75sp">
+        android:padding="10sp">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20sp"
             android:gravity="center"
-            android:text="Powered by OpenWeather API" />
+            android:text="Powered by OpenWeather API"
+            android:textAlignment="center" />
     </LinearLayout>
     <!--<LinearLayout
         android:layout_width="match_parent"

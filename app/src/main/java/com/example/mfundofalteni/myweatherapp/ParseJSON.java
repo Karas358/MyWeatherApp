@@ -12,6 +12,7 @@ public class ParseJSON {
 
     public List<WeatherModel> parseWeather(String json){
         GetMonth getMonth = new GetMonth();
+        WeatherModel weatherModel;
         try {
             List<WeatherModel> weatherModelList = new ArrayList<>();
 
@@ -19,7 +20,7 @@ public class ParseJSON {
             JSONObject cityJSON  = jsonObject.getJSONObject("city");
             JSONArray weatherJSON = jsonObject.getJSONArray("list");
             for(int x = 0; x < weatherJSON.length() ;x++){
-                WeatherModel weatherModel = new WeatherModel();
+                weatherModel = new WeatherModel();
                 JSONObject jsonWeatherOBJ = weatherJSON.getJSONObject(x);
                 JSONObject jsonTempObj = jsonWeatherOBJ.getJSONObject("temp");
                 JSONArray jsonWeatherArray = jsonWeatherOBJ.getJSONArray("weather");

@@ -24,7 +24,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WeatherActivity extends AppCompatActivity implements RecyclerAdaper.OnReflectionListener {
+public class WeatherActivity extends AppCompatActivity implements RecyclerAdaper.OnDayClickListener {
 
     public SwipeRefreshLayout swipeRefreshLayout;
     ShimmerFrameLayout shimmerFrameLayout;
@@ -96,7 +96,7 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdaper
         finish();
     }
     @Override
-    public void onReflectionClick(int position) {
+    public void onDayClick(int position) {
 
     }
     private void startDisplay(){
@@ -120,7 +120,7 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdaper
         myAlertDiagFrag.show(fm, "");
     }
 
-    public class GetWeather extends AsyncTask<String, String, String> implements RecyclerAdaper.OnReflectionListener {
+    public class GetWeather extends AsyncTask<String, String, String> implements RecyclerAdaper.OnDayClickListener {
         @Override
         protected String doInBackground(String[] objects) {
 
@@ -166,7 +166,7 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdaper
         }
 
         @Override
-        public void onReflectionClick(int position) {
+        public void onDayClick(int position) {
             WeatherModel weatherModel = list.get(position);
             prefsManager.populateAllPrefs(weatherModel);
             Intent intent = new Intent(getApplicationContext(), ViewDay.class);

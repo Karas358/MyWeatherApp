@@ -12,39 +12,39 @@ import java.util.List;
 class RecyclerAdaper extends RecyclerView.Adapter<RecyclerAdaper.MyViewHolder> {
 
     private List<WeatherModel> weatherModelList;
-    private OnReflectionListener onReflectionListener;
+    private OnDayClickListener onDayClickListener;
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView DT, txtMin, txtMax, txtWind;
         public ImageView imgview;
-        OnReflectionListener onReflectionListener;
+        OnDayClickListener onDayClickListener;
 
-        public MyViewHolder(View view, OnReflectionListener onReflectionListener) {
+        public MyViewHolder(View view, OnDayClickListener onDayClickListener) {
             super(view);
             DT = view.findViewById(R.id.txtDate);
             txtMin =  view.findViewById(R.id.txtMin);
             txtMax =  view.findViewById(R.id.txtMax);
             txtWind =  view.findViewById(R.id.txtWindSpeed);
             imgview = view.findViewById(R.id.imgWeather);
-            this.onReflectionListener = onReflectionListener;
+            this.onDayClickListener = onDayClickListener;
             view.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            onReflectionListener.onReflectionClick(getAdapterPosition());
+            onDayClickListener.onDayClick(getAdapterPosition());
         }
     }
-    public RecyclerAdaper(List<WeatherModel> weatherModels, OnReflectionListener onReflectionListener) {
+    public RecyclerAdaper(List<WeatherModel> weatherModels, OnDayClickListener onDayClickListener) {
         this.weatherModelList = weatherModels;
-        this.onReflectionListener = onReflectionListener;
+        this.onDayClickListener = onDayClickListener;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.day_layout, parent, false);
-        return new MyViewHolder(itemView, onReflectionListener);
+        return new MyViewHolder(itemView, onDayClickListener);
     }
 
     @Override
@@ -64,7 +64,7 @@ class RecyclerAdaper extends RecyclerView.Adapter<RecyclerAdaper.MyViewHolder> {
         return weatherModelList.size();
     }
 
-    public interface OnReflectionListener{
-        void onReflectionClick(int position);
+    public interface OnDayClickListener{
+        void onDayClick(int position);
     }
 }
