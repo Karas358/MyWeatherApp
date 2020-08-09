@@ -3,16 +3,24 @@ package com.example.mfundofalteni.myweatherapp;
 public class GetIcon {
     public int getWeatherIcon(String small_desc){
         switch (small_desc){
-            case "Clouds":
+            case "scattered clouds":
                 return R.drawable.clouds;
-            case "Clear":
+            case "few clouds":
+                return R.drawable.cloud;
+            case "broken clouds":
+                return R.drawable.clouds;
+            case "clear sky":
                 return R.drawable.clear;
-            case "Snowy":
+            case "snow":
                 return R.drawable.snow;
-            case "Light Rain":
+            case "rain":
+                return R.drawable.rain;
+            case "shower rain":
                 return R.drawable.lightrain;
-            case "Hail":
+            case "thunderstorm":
                 return R.drawable.hail;
+            case "mist":
+                return R.drawable.mist;
             default:
                 return R.drawable.normal;
         }
