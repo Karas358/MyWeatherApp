@@ -1,12 +1,12 @@
 # MyWeatherApp
 Simple android that displays the current location's weather forecast.
 
-#Required
+# Required
 
     Android Studio 4.0.1
 
 
-#Get Started
+# Get Started
 
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
