@@ -15,4 +15,15 @@ Simple android that displays the current location's weather forecast.
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation 'androidx.cardview:cardview:1.0.0'
 
+# Screenshots
+![Screenshot]
+(https://www.dropbox.com/s/0zmwpno450o702i/screenA.jpg?dl=0)
+
+
+![Screenshot]
+(https://www.dropbox.com/s/0zmwpno450o702i/screenA.jpg?dl=0)
+
+
+![Screenshot]
+(https://www.dropbox.com/s/i56gb4nkk89z0dc/screenD.jpg?dl=0)
 
