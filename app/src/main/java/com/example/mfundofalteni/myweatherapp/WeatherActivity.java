@@ -37,6 +37,12 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
+        actionBarInit();
+        initObjects();
+        goCheck();
+    }
+
+    private void actionBarInit(){
         ActionBar actionBar;
         actionBar = getSupportActionBar();
         assert actionBar != null;
@@ -44,9 +50,17 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
         actionBar.setElevation(0);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
+    }
+
+    private void initObjects(){
         myAlertDiagFrag = MyAlertDiagFrag.newInstance();
         fm = getSupportFragmentManager();
         swipeRefreshLayout = findViewById(R.id.swiperefresh);
+        shimmerFrameLayout = findViewById(R.id.shimmer_view_container);
+        shimmerFrameLayout1 = findViewById(R.id.shimmer_view_container2);
+        prefsManager = new PrefsManager(getApplicationContext());
+        recyclerView = findViewById(R.id.my_recycler_view);
+        recyclerView2 = findViewById(R.id.my_recycler_Above);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -56,14 +70,7 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-        shimmerFrameLayout = findViewById(R.id.shimmer_view_container);
-        shimmerFrameLayout1 = findViewById(R.id.shimmer_view_container2);
-        prefsManager = new PrefsManager(getApplicationContext());
-        recyclerView = findViewById(R.id.my_recycler_view);
-        recyclerView2 = findViewById(R.id.my_recycler_Above);
-        goCheck();
     }
-
     public void goCheck() {
         WeatherConnect weatherConnect = new WeatherConnect();
         if (!weatherConnect.checkConnection(getBaseContext())) {

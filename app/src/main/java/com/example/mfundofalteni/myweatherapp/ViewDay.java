@@ -12,7 +12,6 @@ import java.util.List;
 
 public class ViewDay extends AppCompatActivity {
 
-
     ShimmerFrameLayout shimmerFrameLayout;
     public List<WeatherModel> single;
     public ViewDayAdapter viewDayAdapter;
@@ -24,6 +23,11 @@ public class ViewDay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_day);
 
+        actionBarInit();
+        objectInit();
+        display();
+    }
+    private void actionBarInit(){
         ActionBar actionBar;
         actionBar = getSupportActionBar();
         assert actionBar != null;
@@ -31,13 +35,13 @@ public class ViewDay extends AppCompatActivity {
         actionBar.setElevation(0);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
+    }
+    private void objectInit(){
         shimmerFrameLayout = findViewById(R.id.shimmer_container);
         recyclerView = findViewById(R.id.my_recycler_Above);
         prefsManager = new PrefsManager(getApplicationContext());
         shimmerFrameLayout.startShimmer();
-        display();
     }
-
 
     private void display(){
         single = new ArrayList<>();
