@@ -188,7 +188,7 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
             String lat = objects[0];
             String lng = objects[1];
             String key = getString(R.string.api_key);
-            String units = getString(R.string.units);
+            String units = getString(R.string.units_metrical);
             String count = getString(R.string.count);
             return "https://api.openweathermap.org/data/2.5/forecast/daily?"
                     +"lat=" + lat

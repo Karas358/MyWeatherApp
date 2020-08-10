@@ -24,6 +24,7 @@ public class ParseJSON {
                 JSONArray jsonWeatherArray = jsonWeatherOBJ.getJSONArray("weather");
                 JSONObject jsonWeather = jsonWeatherArray.getJSONObject(0);
                 String DT = Instant.ofEpochSecond(Long.parseLong(jsonWeatherOBJ.getString("dt"))).toString().substring(5,10);
+
                 weatherModel.Location = cityJSON.getString("name");
                 weatherModel.Date = getMonth.getMonthName(DT.substring(0,2)) + DT.substring(2,5);
                 weatherModel.Sunrise = Instant.ofEpochSecond(Long.parseLong(jsonWeatherOBJ.getString("sunrise"))).toString().substring(11, 16);

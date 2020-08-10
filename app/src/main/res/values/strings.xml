@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">Rain-Man</string>
     <string name="api_key">358a6c74a6b44042e5d45325d9eb9cd6</string>
-    <string name="units">metric</string>
+    <string name="units_metrical">metric</string>
+    <string name="units_imperial">imperial</string>
+    <string name="metric_distance">km/h</string>
+    <string name="imperial_distance">mph</string>
+    <string name="metric_temp"> °C</string>
+    <string name="imperial_temp"> °F</string>
     <string name="count">6</string>
     <string name="developer">An app by Mfundo Falteni</string>
     <string name="app_api">Powered by OpenWeather API</string>
