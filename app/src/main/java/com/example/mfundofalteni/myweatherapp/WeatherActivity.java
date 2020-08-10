@@ -119,10 +119,7 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
         protected String doInBackground(String[] objects) {
 
             try{
-                String s = objects[0];
-                String s1 = objects[1];
-                String s3 = getString(R.string.api_key);
-                String urlString = "https://api.openweathermap.org/data/2.5/forecast/daily?lat=" + s +"&lon=" + s1 +"&units=metric&cnt=6&appid=" + s3;
+               String urlString = buildURL(objects);
                 URL url = new URL(urlString);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 int res = httpURLConnection.getResponseCode();
@@ -134,9 +131,6 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
                 if((json = bufferedReader.readLine()) != null){
                     return  json;
                 }
-                /*while((json = bufferedReader.readLine()) != null){
-                    return json;
-                }*/
             }
             catch (Exception e){
                 getDialog();
@@ -177,6 +171,20 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
             recyclerView2.setHasFixedSize(true);
             recyclerView2.setLayoutManager(new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false));
             recyclerView2.setAdapter(viewDayAdapter);
+        }
+
+        private String buildURL(String[] objects){
+            String lat = objects[0];
+            String lng = objects[1];
+            String key = getString(R.string.api_key);
+            String units = getString(R.string.units);
+            String count = getString(R.string.count);
+            return "https://api.openweathermap.org/data/2.5/forecast/daily?"
+                    +"lat=" + lat
+                    +"&lon=" + lng
+                    +"&units="+ units
+                    +"&cnt=" + count
+                    +"&appid=" + key;
         }
     }
 }

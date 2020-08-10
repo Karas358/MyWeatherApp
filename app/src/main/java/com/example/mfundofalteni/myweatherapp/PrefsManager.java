@@ -20,7 +20,7 @@ public class PrefsManager {
 
     public void set_DT(String DT) {
         editor.putString("DT" , DT);
-        editor.commit();
+        editor.apply();
     }
 
     public String get_DT() {
@@ -30,7 +30,7 @@ public class PrefsManager {
 
     public void set_Location(String location) {
         editor.putString("Location" , location);
-        editor.commit();
+        editor.apply();
     }
 
     public String get_Location() {
@@ -39,7 +39,7 @@ public class PrefsManager {
     }
     public void set_Sunrise(String Sunrise) {
         editor.putString("Sunrise" , Sunrise);
-        editor.commit();
+        editor.apply();
     }
 
     public String get_Sunrise() {
@@ -49,7 +49,7 @@ public class PrefsManager {
 
     public void set_Sunset(String Sunset) {
         editor.putString("Sunset" , Sunset);
-        editor.commit();
+        editor.apply();
     }
 
     public String get_Sunset() {
@@ -58,7 +58,7 @@ public class PrefsManager {
     }
     public void set_Min(String Min) {
         editor.putString("Min" , Min);
-        editor.commit();
+        editor.apply();
     }
 
     public String get_Min() {
@@ -68,7 +68,7 @@ public class PrefsManager {
 
     public void set_Max(String Max) {
         editor.putString("Max" , Max);
-        editor.commit();
+        editor.apply();
     }
 
     public String get_Max() {
@@ -77,7 +77,7 @@ public class PrefsManager {
     }
     public void set_Windspeed(String Windspeed) {
         editor.putString("Windspeed" , Windspeed);
-        editor.commit();
+        editor.apply();
     }
 
     public String get_Windspeed() {
@@ -87,7 +87,7 @@ public class PrefsManager {
 
     public void set_Humidity(String Humidity) {
         editor.putString("Humidity" , Humidity);
-        editor.commit();
+        editor.apply();
     }
 
     public String get_Humidity() {
@@ -96,7 +96,7 @@ public class PrefsManager {
     }
     public void set_Description(String Description) {
         editor.putString("Description" , Description);
-        editor.commit();
+        editor.apply();
     }
 
     public String get_Description() {
@@ -106,7 +106,7 @@ public class PrefsManager {
 
     public void set_MainDesc(String MainDesc) {
         editor.putString("MainDesc" , MainDesc);
-        editor.commit();
+        editor.apply();
     }
 
     public String get_MainDesc() {

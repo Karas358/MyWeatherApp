@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Rain-Man</string>
     <string name="api_key">358a6c74a6b44042e5d45325d9eb9cd6</string>
+    <string name="units">metric</string>
+    <string name="count">6</string>
     <string name="developer">An app by Mfundo Falteni</string>
     <string name="app_api">Powered by OpenWeather API</string>
     <string name="iconDescription">Weather Icon</string>

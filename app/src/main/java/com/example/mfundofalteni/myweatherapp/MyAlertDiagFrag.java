@@ -37,7 +37,6 @@ public class MyAlertDiagFrag extends DialogFragment {
             public void onClick(DialogInterface dialogInterface, int i) {
                 Objects.requireNonNull(getActivity()).startActivityForResult(new Intent(Settings.ACTION_SETTINGS), 0);
                 System.exit(0);
-                //getActivity().finish();
             }
         });
 
