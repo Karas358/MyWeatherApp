@@ -39,9 +39,9 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
 
         ActionBar actionBar;
         actionBar = getSupportActionBar();
-        //actionBar.setTitle("");
+        assert actionBar != null;
+        actionBar.setTitle("");
         actionBar.setElevation(0);
-        //assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
         myAlertDiagFrag = MyAlertDiagFrag.newInstance();

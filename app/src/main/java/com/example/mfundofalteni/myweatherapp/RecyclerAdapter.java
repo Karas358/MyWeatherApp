@@ -5,6 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -14,7 +16,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>
     private List<WeatherModel> weatherModelList;
     private OnDayClickListener onDayClickListener;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class  MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView DT, txtMin, txtMax, txtWind;
         public ImageView imgview;
         OnDayClickListener onDayClickListener;
@@ -40,6 +42,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>
         this.onDayClickListener = onDayClickListener;
     }
 
+    @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())

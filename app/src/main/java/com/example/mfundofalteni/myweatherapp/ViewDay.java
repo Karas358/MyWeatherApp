@@ -26,7 +26,8 @@ public class ViewDay extends AppCompatActivity {
 
         ActionBar actionBar;
         actionBar = getSupportActionBar();
-        //actionBar.setTitle("");
+        assert actionBar != null;
+        actionBar.setTitle("");
         actionBar.setElevation(0);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
