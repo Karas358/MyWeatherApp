@@ -3,6 +3,7 @@ package com.example.mfundofalteni.myweatherapp;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -143,7 +144,6 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
                 getDialog();
             }
             return null;
-
         }
 
         @Override
@@ -159,12 +159,15 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
             recyclerAdaper = new RecyclerAdapter(list, this);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, false));
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
             recyclerView.setAdapter(recyclerAdaper);
             stopDisplay();
         }
 
         @Override
         public void onDayClick(int position) {
+            //recyclerView.setEnabled(false);
+            recyclerView.setClickable(false);
             WeatherModel weatherModel = list.get(position);
             prefsManager.populateAllPrefs(weatherModel);
             Intent intent = new Intent(getApplicationContext(), ViewDay.class);
