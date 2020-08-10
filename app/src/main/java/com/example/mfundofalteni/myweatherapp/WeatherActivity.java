@@ -27,11 +27,10 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
     PrefsManager prefsManager;
     public List<WeatherModel> list;
     public List<WeatherModel> single;
-    public RecyclerAdapter recyclerAdaper;
+    public RecyclerAdapter recyclerAdapter;
     public ViewDayAdapter viewDayAdapter;
-    public RecyclerView recyclerView;
-    public RecyclerView recyclerView2;
-    FragmentManager fm;
+    public RecyclerView recyclerDaily;
+    public RecyclerView recyclerToday;
     MyAlertDiagFrag myAlertDiagFrag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
 
         actionBarInit();
         initObjects();
-        goCheck();
+        goCheckIfReady();
     }
 
     private void actionBarInit(){
@@ -54,34 +53,31 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
     }
 
     private void initObjects(){
-        myAlertDiagFrag = MyAlertDiagFrag.newInstance();
-        fm = getSupportFragmentManager();
+
         swipeRefreshLayout = findViewById(R.id.swiperefresh);
         shimmerFrameLayout = findViewById(R.id.shimmer_view_container);
         shimmerFrameLayout1 = findViewById(R.id.shimmer_view_container2);
-        prefsManager = new PrefsManager(getApplicationContext());
-        recyclerView = findViewById(R.id.my_recycler_view);
-        recyclerView2 = findViewById(R.id.my_recycler_Above);
+        recyclerDaily = findViewById(R.id.my_recycler_view);
+        recyclerToday = findViewById(R.id.my_recycler_Above);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
-                goCheck();
+                goCheckIfReady();
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
     }
-    public void goCheck() {
+    public void goCheckIfReady() {
         WeatherConnect weatherConnect = new WeatherConnect();
-        if (!weatherConnect.checkConnection(getBaseContext())) {
+        if (!weatherConnect.checkConnection(getBaseContext())){
             getDialog();
-        } else {
-            goGet();
+        }else {
+            goGetWeather();
         }
     }
 
-    private void goGet(){
+    private void goGetWeather(){
         String lat =  getIntent().getDoubleExtra("lat", 0.0) + "";
         String lng = getIntent().getDoubleExtra("lng", 0.0) + "";
         startDisplay();
@@ -105,8 +101,8 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
         shimmerFrameLayout.startShimmer();
         shimmerFrameLayout1.startShimmer();
         shimmerFrameLayout.setVisibility(View.VISIBLE);
-        recyclerView.setVisibility(View.GONE);
-        recyclerView2.setVisibility(View.GONE);
+        recyclerDaily.setVisibility(View.GONE);
+        recyclerToday.setVisibility(View.GONE);
         shimmerFrameLayout1.setVisibility(View.VISIBLE);
     }
     public void stopDisplay(){
@@ -114,12 +110,13 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
         shimmerFrameLayout1.stopShimmer();
         shimmerFrameLayout.setVisibility(View.GONE);
         shimmerFrameLayout1.setVisibility(View.GONE);
-        recyclerView.setVisibility(View.VISIBLE);
-        recyclerView2.setVisibility(View.VISIBLE);
+        recyclerToday.setVisibility(View.VISIBLE);
+        recyclerDaily.setVisibility(View.VISIBLE);
     }
 
     private void getDialog(){
-        myAlertDiagFrag.show(fm, "");
+        myAlertDiagFrag = MyAlertDiagFrag.newInstance();
+        myAlertDiagFrag.show(getSupportFragmentManager(), "");
     }
 
     public class GetWeather extends AsyncTask<String, String, String> implements RecyclerAdapter.OnDayClickListener {
@@ -151,24 +148,28 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
             super.onPostExecute(res);
 
             ParseJSON parseJSON = new ParseJSON();
-            list = parseJSON.parseWeather(res);
-            WeatherModel weatherModel = list.get(0);
-            weatherModel.DT = "Today, " + weatherModel.DT;
-            populateToday(weatherModel);
-            list.remove(0);
-            recyclerAdaper = new RecyclerAdapter(list, this);
-            recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, false));
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
-            recyclerView.setAdapter(recyclerAdaper);
-            stopDisplay();
+
+            try {
+                list = parseJSON.parseWeather(res);
+                WeatherModel weatherModel = list.get(0);
+                weatherModel.Date = "Today, " + weatherModel.Date;
+                populateToday(weatherModel);
+                list.remove(0);
+                recyclerAdapter = new RecyclerAdapter(list, this);
+                recyclerDaily.setHasFixedSize(true);
+                recyclerDaily.setLayoutManager(new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, false));
+                recyclerDaily.setItemAnimator(new DefaultItemAnimator());
+                recyclerDaily.setAdapter(recyclerAdapter);
+                stopDisplay();
+            } catch (Exception e) {
+                getDialog();
+            }
         }
 
         @Override
         public void onDayClick(int position) {
-            //recyclerView.setEnabled(false);
-            recyclerView.setClickable(false);
             WeatherModel weatherModel = list.get(position);
+            prefsManager = new PrefsManager(getApplicationContext());
             prefsManager.populateAllPrefs(weatherModel);
             Intent intent = new Intent(getApplicationContext(), ViewDay.class);
             startActivity(intent);
@@ -178,9 +179,9 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdapte
             single = new ArrayList<>();
             single.add(weatherModel);
             viewDayAdapter = new ViewDayAdapter(single);
-            recyclerView2.setHasFixedSize(true);
-            recyclerView2.setLayoutManager(new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false));
-            recyclerView2.setAdapter(viewDayAdapter);
+            recyclerToday.setHasFixedSize(true);
+            recyclerToday.setLayoutManager(new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false));
+            recyclerToday.setAdapter(viewDayAdapter);
         }
 
         private String buildURL(String[] objects){

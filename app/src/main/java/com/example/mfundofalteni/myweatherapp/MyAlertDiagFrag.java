@@ -38,8 +38,6 @@ public class MyAlertDiagFrag extends DialogFragment {
                 System.exit(0);
             }
         });
-
-
         return alertBuilder.create();
     }
 }

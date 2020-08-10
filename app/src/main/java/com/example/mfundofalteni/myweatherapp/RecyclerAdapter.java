@@ -17,17 +17,17 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>
     private OnDayClickListener onDayClickListener;
 
     public static class  MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView DT, txtMin, txtMax, txtWind;
-        public ImageView imgview;
+        public TextView txtDate, txtMin, txtMax, txtWind;
+        public ImageView imgView;
         OnDayClickListener onDayClickListener;
 
         public MyViewHolder(View view, OnDayClickListener onDayClickListener) {
             super(view);
-            DT = view.findViewById(R.id.txtDate);
+            txtDate = view.findViewById(R.id.txtDate);
             txtMin =  view.findViewById(R.id.txtMin);
             txtMax =  view.findViewById(R.id.txtMax);
             txtWind =  view.findViewById(R.id.txtWindSpeed);
-            imgview = view.findViewById(R.id.imgWeather);
+            imgView = view.findViewById(R.id.imgWeather);
             this.onDayClickListener = onDayClickListener;
             view.setOnClickListener(this);
         }
@@ -55,11 +55,11 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>
         final WeatherModel weatherModel = weatherModelList.get(position);
 
         GetIcon getIcon = new GetIcon();
-        holder.DT.setText(weatherModel.DT);
+        holder.txtDate.setText(weatherModel.Date);
         holder.txtMin.setText(weatherModel.TempMin);
         holder.txtMax.setText(weatherModel.TempMax);
         holder.txtWind.setText(weatherModel.WindSpeed);
-        holder.imgview.setImageResource(getIcon.getWeatherIcon(weatherModel.Description));
+        holder.imgView.setImageResource(getIcon.getWeatherIcon(weatherModel.Description));
     }
 
     @Override

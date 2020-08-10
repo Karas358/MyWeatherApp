@@ -116,7 +116,7 @@ public class PrefsManager {
 
     public WeatherModel getAllPrefs(){
         WeatherModel weatherModel = new WeatherModel();
-        weatherModel.DT = get_DT();
+        weatherModel.Date = get_DT();
         weatherModel.Location = get_Location();
         weatherModel.Sunrise = get_Sunrise();
         weatherModel.Sunset = get_Sunset();
@@ -130,7 +130,7 @@ public class PrefsManager {
     }
 
     public void populateAllPrefs(WeatherModel weatherModel){
-        set_DT(weatherModel.DT);
+        set_DT(weatherModel.Date);
         set_Location(weatherModel.Location);
         set_Sunrise(weatherModel.Sunrise);
         set_Sunset(weatherModel.Sunset);

@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentManager;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
@@ -36,9 +35,8 @@ public class SplashActivity extends AppCompatActivity {
     public void goCheck() {
         WeatherConnect weatherConnect = new WeatherConnect();
         if (!weatherConnect.checkConnection(getBaseContext())) {
-            FragmentManager fm = getSupportFragmentManager();
             MyAlertDiagFrag myAlertDiagFrag = MyAlertDiagFrag.newInstance();
-            myAlertDiagFrag.show(fm, "");
+            myAlertDiagFrag.show(getSupportFragmentManager(), "");
         } else {
             getLocation();
         }
@@ -51,7 +49,8 @@ public class SplashActivity extends AppCompatActivity {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 getLocation();
             } else {
-                Toast.makeText(this, "Permission Denied", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Permission Denied, app will exit.", Toast.LENGTH_LONG).show();
+                System.exit(0);
             }
         }
     }
@@ -78,15 +77,15 @@ public class SplashActivity extends AppCompatActivity {
                             int lastLocation = locationResult.getLocations().size() - 1;
                             double lat = locationResult.getLocations().get(lastLocation).getLatitude();
                             double lng = locationResult.getLocations().get(lastLocation).getLongitude();
-                            showLat(lat, lng);
+                            getWeather(lat, lng);
                         }
                     }
                 }, Looper.getMainLooper());
     }
-    private void showLat(double d, double dd){
+    private void getWeather(double lat, double lng){
         Intent intent = new Intent(this, WeatherActivity.class);
-        intent.putExtra("lat",d);
-        intent.putExtra("lng",dd);
+        intent.putExtra("lat",lat);
+        intent.putExtra("lng",lng);
         startActivity(intent);
         finish();
     }

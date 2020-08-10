@@ -49,7 +49,7 @@ public class ViewDayAdapter extends RecyclerView.Adapter<ViewDayAdapter.MyViewHo
         final WeatherModel weatherModel = weatherModelList.get(position);
 
         GetIcon getIcon = new GetIcon();
-        holder.txtDate.setText(weatherModel.DT);
+        holder.txtDate.setText(weatherModel.Date);
         holder.txtDescription.setText(weatherModel.Description);
         holder.txtLocation.setText(weatherModel.Location);
         holder.txtSunrise.setText(weatherModel.Sunrise);
@@ -60,7 +60,6 @@ public class ViewDayAdapter extends RecyclerView.Adapter<ViewDayAdapter.MyViewHo
         holder.txtHumidity.setText(weatherModel.Humidity);
         holder.imgview.setImageResource(getIcon.getWeatherIcon(weatherModel.Description));
     }
-
     @Override
     public int getItemCount() {
         return weatherModelList.size();

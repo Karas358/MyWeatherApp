@@ -2,7 +2,7 @@ package com.example.mfundofalteni.myweatherapp;
 
 public class WeatherModel {
     public String Location;
-    public String DT;
+    public String Date;
     public String Sunrise;
     public String Sunset;
     public String TempMin;

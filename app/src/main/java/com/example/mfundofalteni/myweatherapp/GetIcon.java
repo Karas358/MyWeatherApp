@@ -1,8 +1,12 @@
 package com.example.mfundofalteni.myweatherapp;
 
 
+import android.content.Context;
+
 public class GetIcon {
     public int getWeatherIcon(String small_desc){
+        Context context;
+
         switch (small_desc){
             case "scattered clouds":
                 return R.drawable.clouds;

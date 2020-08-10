@@ -29,7 +29,7 @@ public class GetMonth {
             case "12":
                 return "Dec";
             default:
-                return "UDF";
+                return "UNDEFINED";
         }
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ParseJSON {
 
-    public List<WeatherModel> parseWeather(String json){
+    public List<WeatherModel> parseWeather(String json) throws Exception {
         GetMonth getMonth = new GetMonth();
         WeatherModel weatherModel;
         try {
@@ -25,7 +25,7 @@ public class ParseJSON {
                 JSONObject jsonWeather = jsonWeatherArray.getJSONObject(0);
                 String DT = Instant.ofEpochSecond(Long.parseLong(jsonWeatherOBJ.getString("dt"))).toString().substring(5,10);
                 weatherModel.Location = cityJSON.getString("name");
-                weatherModel.DT = getMonth.getMonthName(DT.substring(0,2)) + DT.substring(2,5);
+                weatherModel.Date = getMonth.getMonthName(DT.substring(0,2)) + DT.substring(2,5);
                 weatherModel.Sunrise = Instant.ofEpochSecond(Long.parseLong(jsonWeatherOBJ.getString("sunrise"))).toString().substring(11, 16);
                 weatherModel.Sunset = Instant.ofEpochSecond(Long.parseLong(jsonWeatherOBJ.getString("sunset"))).toString().substring(11, 16);
                 weatherModel.TempMin = jsonTempObj.getString("min") +" °C";
@@ -38,9 +38,8 @@ public class ParseJSON {
             }
            return weatherModelList;
 
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            throw new Exception();
         }
-        return null;
     }
 }
