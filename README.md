@@ -17,7 +17,7 @@ Simple android that displays the current location's weather forecast.
 
 # Screenshots
 ![Screenshot]
-(https://github.com/Karas358/MyWeatherApp/blob/master/app/src/main/res/drawable/screenA.jpg)
+(https://github.com/Karas358/MyWeatherApp/blob/master/app/src/main/res/drawable/screenA.jpg?raw=true)
 
 
 ![Screenshot]
