@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-class RecyclerAdaper extends RecyclerView.Adapter<RecyclerAdaper.MyViewHolder> {
+class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
 
     private List<WeatherModel> weatherModelList;
     private OnDayClickListener onDayClickListener;
@@ -35,7 +35,7 @@ class RecyclerAdaper extends RecyclerView.Adapter<RecyclerAdaper.MyViewHolder> {
             onDayClickListener.onDayClick(getAdapterPosition());
         }
     }
-    public RecyclerAdaper(List<WeatherModel> weatherModels, OnDayClickListener onDayClickListener) {
+    public RecyclerAdapter(List<WeatherModel> weatherModels, OnDayClickListener onDayClickListener) {
         this.weatherModelList = weatherModels;
         this.onDayClickListener = onDayClickListener;
     }

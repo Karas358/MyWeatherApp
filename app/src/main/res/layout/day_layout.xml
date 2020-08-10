@@ -24,7 +24,7 @@
                 android:id="@+id/txtDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="07/08"
+                android:text="@string/DT"
                 android:textAlignment="center"
                 android:textSize="18sp" />
 
@@ -32,6 +32,7 @@
                 android:id="@+id/imgWeather"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/iconDescription"
                 android:textAlignment="center"
                 app:srcCompat="@drawable/hail" />
 
@@ -39,7 +40,7 @@
                 android:id="@+id/txtMin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="5"
+                android:text="@string/Min"
                 android:textAlignment="center"
                 android:textSize="14sp" />
 
@@ -47,7 +48,7 @@
                 android:id="@+id/txtMax"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="15"
+                android:text="@string/Max"
                 android:textAlignment="center"
                 android:textSize="14sp" />
 
@@ -55,7 +56,7 @@
                 android:id="@+id/txtWindSpeed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="3 km/h"
+                android:text="@string/WindSpeed"
                 android:textAlignment="center"
                 android:textSize="14sp" />
         </LinearLayout>

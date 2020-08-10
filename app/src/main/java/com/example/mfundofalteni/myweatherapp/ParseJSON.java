@@ -1,6 +1,4 @@
 package com.example.mfundofalteni.myweatherapp;
-
-import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,7 +30,7 @@ public class ParseJSON {
                 weatherModel.Sunset = Instant.ofEpochSecond(Long.parseLong(jsonWeatherOBJ.getString("sunset"))).toString().substring(11, 16);
                 weatherModel.TempMin = jsonTempObj.getString("min") +" °C";
                 weatherModel.TempMax = jsonTempObj.getString("max") +" °C";
-                weatherModel.Humidity = jsonWeatherOBJ.getString("humidity") + " %";;
+                weatherModel.Humidity = jsonWeatherOBJ.getString("humidity") + " %";
                 weatherModel.WindSpeed = jsonWeatherOBJ.getString("speed") + " \nkm/h";
                 weatherModel.Description = jsonWeather.getString("description");
                 weatherModel.MainDesc = jsonWeather.getString("main");

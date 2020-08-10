@@ -1,22 +1,16 @@
 package com.example.mfundofalteni.myweatherapp;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Half;
-import android.util.Log;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
-
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
@@ -43,7 +37,7 @@ public class SplashActivity extends AppCompatActivity {
         WeatherConnect weatherConnect = new WeatherConnect();
         if (!weatherConnect.checkConnection(getBaseContext())) {
             FragmentManager fm = getSupportFragmentManager();
-            MyAlertDiagFrag myAlertDiagFrag = MyAlertDiagFrag.newInstance("Test");
+            MyAlertDiagFrag myAlertDiagFrag = MyAlertDiagFrag.newInstance();
             myAlertDiagFrag.show(fm, "");
         } else {
             getLocation();

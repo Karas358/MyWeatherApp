@@ -2,4 +2,20 @@
     <string name="app_name">Rain-Man</string>
     <string name="api_key">358a6c74a6b44042e5d45325d9eb9cd6</string>
     <string name="developer">An app by Mfundo Falteni</string>
+    <string name="app_api">Powered by OpenWeather API</string>
+    <string name="iconDescription">Weather Icon</string>
+    <string name="DT">Aug-31</string>
+    <string name="TDT">Today, Aug-31</string>
+    <string name="Min">13.59 °C</string>
+    <string name="Max">43.59 °C</string>
+    <string name="WindSpeed">6.59 \nkm/h</string>
+    <string name="Sunrise">04:49</string>
+    <string name="Sunset">18:22</string>
+    <string name="Humidity">13%</string>
+    <string name="Description">Sky is clear</string>
+    <string name="Location">Bryanston</string>
+    <string name="Sunrise_amb">Sunrise</string>
+    <string name="Sunset_amb">Sunset</string>
+    <string name="Wind_amb">Windspeed</string>
+    <string name="Humidity_amb">Humidity</string>
 </resources>

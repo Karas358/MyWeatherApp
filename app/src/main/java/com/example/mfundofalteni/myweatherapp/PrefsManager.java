@@ -7,6 +7,7 @@ public class PrefsManager {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     Context _context;
+    String res = "";
 
     int PRIVATE_MODE = 0;
 
@@ -23,7 +24,7 @@ public class PrefsManager {
     }
 
     public String get_DT() {
-        String res = pref.getString("DT" , "DT");
+        res = pref.getString("DT" , "DT");
         return res;
     }
 
@@ -33,7 +34,7 @@ public class PrefsManager {
     }
 
     public String get_Location() {
-        String res = pref.getString("Location" , "Location");
+        res = pref.getString("Location" , "Location");
         return res;
     }
     public void set_Sunrise(String Sunrise) {
@@ -42,7 +43,7 @@ public class PrefsManager {
     }
 
     public String get_Sunrise() {
-        String res = pref.getString("Sunrise" , "Sunrise");
+        res = pref.getString("Sunrise" , "Sunrise");
         return res;
     }
 
@@ -52,7 +53,7 @@ public class PrefsManager {
     }
 
     public String get_Sunset() {
-        String res = pref.getString("Sunset" , "Sunset");
+        res = pref.getString("Sunset" , "Sunset");
         return res;
     }
     public void set_Min(String Min) {
@@ -61,7 +62,7 @@ public class PrefsManager {
     }
 
     public String get_Min() {
-        String res = pref.getString("Min" , "Min");
+        res = pref.getString("Min" , "Min");
         return res;
     }
 
@@ -71,7 +72,7 @@ public class PrefsManager {
     }
 
     public String get_Max() {
-        String res = pref.getString("Max" , "Max");
+        res = pref.getString("Max" , "Max");
         return res;
     }
     public void set_Windspeed(String Windspeed) {
@@ -80,7 +81,7 @@ public class PrefsManager {
     }
 
     public String get_Windspeed() {
-        String res = pref.getString("Windspeed" , "Windspeed");
+        res = pref.getString("Windspeed" , "Windspeed");
         return res;
     }
 
@@ -90,7 +91,7 @@ public class PrefsManager {
     }
 
     public String get_Humidity() {
-        String res = pref.getString("Humidity" , "Humidity");
+        res = pref.getString("Humidity" , "Humidity");
         return res;
     }
     public void set_Description(String Description) {
@@ -99,7 +100,7 @@ public class PrefsManager {
     }
 
     public String get_Description() {
-        String res = pref.getString("Description" , "Description");
+        res = pref.getString("Description" , "Description");
         return res;
     }
 
@@ -109,7 +110,7 @@ public class PrefsManager {
     }
 
     public String get_MainDesc() {
-        String res = pref.getString("MainDesc" , "MainDesc");
+        res = pref.getString("MainDesc" , "MainDesc");
         return res;
     }
 

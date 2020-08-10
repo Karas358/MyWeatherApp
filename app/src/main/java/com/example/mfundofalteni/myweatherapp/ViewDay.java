@@ -4,14 +4,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
-
 import com.facebook.shimmer.ShimmerFrameLayout;
-
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,9 +26,8 @@ public class ViewDay extends AppCompatActivity {
 
         ActionBar actionBar;
         actionBar = getSupportActionBar();
-        actionBar.setTitle("");
+        //actionBar.setTitle("");
         actionBar.setElevation(0);
-        //assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
         shimmerFrameLayout = findViewById(R.id.shimmer_container);

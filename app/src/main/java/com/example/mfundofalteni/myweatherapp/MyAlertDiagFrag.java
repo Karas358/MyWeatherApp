@@ -14,7 +14,7 @@ import java.util.Objects;
 public class MyAlertDiagFrag extends DialogFragment {
     public MyAlertDiagFrag(){}
 
-    public static MyAlertDiagFrag newInstance(String title){
+    public static MyAlertDiagFrag newInstance(){
         MyAlertDiagFrag myAlertDiagFrag = new MyAlertDiagFrag();
         return myAlertDiagFrag;
     }

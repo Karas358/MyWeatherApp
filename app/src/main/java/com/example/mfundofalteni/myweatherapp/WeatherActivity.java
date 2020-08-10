@@ -6,17 +6,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.facebook.shimmer.ShimmerFrameLayout;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -24,7 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WeatherActivity extends AppCompatActivity implements RecyclerAdaper.OnDayClickListener {
+public class WeatherActivity extends AppCompatActivity implements RecyclerAdapter.OnDayClickListener {
 
     public SwipeRefreshLayout swipeRefreshLayout;
     ShimmerFrameLayout shimmerFrameLayout;
@@ -32,7 +26,7 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdaper
     PrefsManager prefsManager;
     public List<WeatherModel> list;
     public List<WeatherModel> single;
-    public RecyclerAdaper recyclerAdaper;
+    public RecyclerAdapter recyclerAdaper;
     public ViewDayAdapter viewDayAdapter;
     public RecyclerView recyclerView;
     public RecyclerView recyclerView2;
@@ -45,12 +39,12 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdaper
 
         ActionBar actionBar;
         actionBar = getSupportActionBar();
-        actionBar.setTitle("");
+        //actionBar.setTitle("");
         actionBar.setElevation(0);
         //assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
-        myAlertDiagFrag = MyAlertDiagFrag.newInstance("Test");
+        myAlertDiagFrag = MyAlertDiagFrag.newInstance();
         fm = getSupportFragmentManager();
         swipeRefreshLayout = findViewById(R.id.swiperefresh);
 
@@ -120,7 +114,7 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdaper
         myAlertDiagFrag.show(fm, "");
     }
 
-    public class GetWeather extends AsyncTask<String, String, String> implements RecyclerAdaper.OnDayClickListener {
+    public class GetWeather extends AsyncTask<String, String, String> implements RecyclerAdapter.OnDayClickListener {
         @Override
         protected String doInBackground(String[] objects) {
 
@@ -136,10 +130,13 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdaper
                     getDialog();
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(httpURLConnection.getInputStream()));
-                String json = "";
-                while((json = bufferedReader.readLine()) != null){
-                    return json;
+                String json;
+                if((json = bufferedReader.readLine()) != null){
+                    return  json;
                 }
+                /*while((json = bufferedReader.readLine()) != null){
+                    return json;
+                }*/
             }
             catch (Exception e){
                 getDialog();
@@ -158,7 +155,7 @@ public class WeatherActivity extends AppCompatActivity implements RecyclerAdaper
             weatherModel.DT = "Today, " + weatherModel.DT;
             populateToday(weatherModel);
             list.remove(0);
-            recyclerAdaper = new RecyclerAdaper(list, this);
+            recyclerAdaper = new RecyclerAdapter(list, this);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, false));
             recyclerView.setAdapter(recyclerAdaper);
