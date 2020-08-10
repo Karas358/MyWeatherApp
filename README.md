@@ -17,7 +17,7 @@ Simple android that displays the current location's weather forecast.
 
 # Screenshots
 ![Screenshot]
-(../blob/master/app/src/main/res/drawable/screenA.jpg?raw=true)
+(https://www.dropbox.com/s/0zmwpno450o702i/screenA.jpg?dl=0)
 
 
 ![Screenshot]
